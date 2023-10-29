@@ -35,4 +35,4 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 # Model files
-saved_dependencies/*.bin
+others_dependencies/*

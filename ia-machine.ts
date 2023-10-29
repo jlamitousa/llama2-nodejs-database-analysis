@@ -1,7 +1,7 @@
 import type { Generate } from '@llama-node/llama-cpp';
 import { LLM } from 'llama-node';
 import { LLamaCpp, type LoadConfig } from "llama-node/dist/llm/llama-cpp.js";
-import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 
 export default class IAMachine {
 
@@ -25,7 +25,7 @@ export default class IAMachine {
             useMlock: false,
             embedding: false,
             useMmap: true,
-            nGpuLayers: 0
+            nGpuLayers: 40
         };
 
         this.modelLoaded = false;
@@ -57,7 +57,7 @@ export default class IAMachine {
             throw new Error("Model not loaded. Please call 'loadModel' before.");
         }
 
-        data = await readFile(dataPath, 'utf8');
+        data = await readFileSync(dataPath, 'utf8');
 
         template = `Here after a file content: \n\n${data}\n\n${questionOnData}`;
         
