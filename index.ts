@@ -9,15 +9,25 @@ const modelPath:string = path.resolve(process.cwd(), "./others_dependencies/stab
 /**
  * An extraction from your database related to data you want to know something about.
  */
-const dataPath:string = path.resolve(process.cwd(), "./saved_dependencies/hypothetic-db-query-extraction.csv");
+const dataPath:string = path.resolve(process.cwd(), "./others_dependencies/tomcat8-stdout.2023-04-24.log");
 
 /**
  * The question to answer 
  */
 //const questionOnData:string = "How many women are listed in this CSV file and how many of them are french ? Explain me precisely which lines you used for your deduction.";
-const questionOnData:string = "How many women are listed in this CSV file ? List me the result as CSV with only firstname, lastname and the colunmn you used for the deduction. After that, I want the same for men.";
+const questionOnData:string = "How many web service call are present. Tell me what strategy you did use to found it.";
 
-
+/**
+ * Pattern 1: a web service call input start with the balise "<ns2:InsertActorRequest>" 
+ * Pattern 2: a web service call output start with the balise "<ns3:InsertActorResponse>"
+ * 
+ * Rule1.Quand tu détecte un début de balise, tu met la valeur start=true
+ * Rule2. Quand tu détecte une fin de balise, tu met la valeur end=true
+ * Rule3. si tu est dans un start=true, tant que tu n'a pas détecté une end=true, tu continue.
+ * 
+ * Différence avec une boucle for ?! 
+ * 
+ */
 
 const main = async () => {
 
